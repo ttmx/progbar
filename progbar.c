@@ -210,7 +210,7 @@ static void
 usage(void)
 {
 	fputs("usage: progbar [-v] [-b] [-nb] [-m monitor] [-w windowid]\n"
-	      "               [-bg color] [-bb color] [-bf color]\n"
+	      "               [-bg color] [-be color] [-bf color]\n"
 		  "               [-x x] [-y y] [-h height] [-w width]\n"
 		  "               [-bt border] [-t duration] percentage\n", stderr);
 	exit(1);
@@ -286,7 +286,7 @@ main(int argc, char *argv[])
 			embed = argv[++i];
 		else if (!strcmp(argv[i], "-bg"))  /* background/border color */
 			colors[SchemeNorm][ColBg] = argv[++i];
-		else if (!strcmp(argv[i], "-bb"))  /* bar background color */
+		else if (!strcmp(argv[i], "-be"))  /* bar empty color */
 			colors[SchemeOut][ColBg] = argv[++i];
 		else if (!strcmp(argv[i], "-bf"))  /* bar fill color */
 			colors[SchemeSel][ColBg] = argv[++i];
