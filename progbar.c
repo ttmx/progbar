@@ -211,7 +211,7 @@ usage(void)
 {
 	fputs("usage: progbar [-v] [-b] [-nb] [-m monitor] [-w windowid]\n"
 	      "               [-bg color] [-be color] [-bf color]\n"
-		  "               [-x x] [-y y] [-h height] [-w width]\n"
+		  "               [-x x] [-y y] [-h height] [-wf width]\n"
 		  "               [-bt border] [-t duration] percentage\n", stderr);
 	exit(1);
 }
@@ -294,7 +294,7 @@ main(int argc, char *argv[])
 			pos_y = atoi(argv[++i]);
 		else if (!strcmp(argv[i], "-h"))   /* bar height */
 			bh = atoi(argv[++i]);
-		else if (!strcmp(argv[i], "-w"))   /* bar width fraction */
+		else if (!strcmp(argv[i], "-wf"))   /* bar width fraction */
 			bwf = atof(argv[++i]);
 		else if (!strcmp(argv[i], "-bt"))  /* bar border thickness */
 			border = atoi(argv[++i]);
