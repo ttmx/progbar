@@ -1,0 +1,2 @@
+#!/bin/sh
+progbar_path | progbar "$@" | ${SHELL:-"/bin/sh"} &

@@ -1,11 +1,26 @@
-# Luke's dmenu
+# progbar
+Simple X11 progress bar frankensteined from dmenu.
 
-This is just my build of dmenu. Nothing special, don't bother starring ;-)
+## Usage
+```
+progbar [-v] [-b] [-nb] [-m monitor] [-w windowid] [-bg color] [-be color] [-bf color] [-x x] [-y y] [-h height] [-w width] [-bt border] [-t duration] percentage
+```
 
-Only changes are minor config ones: bigger font and different colors.
+## Customization
 
-The only reason this is even on Github is so LARBS can access the build, although this repo serves the additional purpose of using Github's metrics to approximate the number of people who install LARBS every day.
-
-## Installation
-
-After making any config changes that you want, but `make`, `sudo make install` it.
+Arg             | Description
+----------------|--------------
+`-v`            | Print version and exit
+`-b`            | Move bar to the bottom of the screen
+`-nb`           | No background
+`-m <monitor>`  | Select monitor
+`-w <windowid>` | Select embedding window
+`-bg <color>`   | Background color
+`-be <color>`   | Bar empty color
+`-bf <color>`   | Bar fill color
+`-x <x>`        | Horizontal position
+`-y <y>`        | Vertical position <br> Will start from the bottom if used in conjunction with `-b`
+`-h <height>`   | Height
+`-w <width>`    | Width in fraction of screen width
+`-bt <border>`  | Border thickness
+`-t <duration>` | Display duration in seconds with decimal places

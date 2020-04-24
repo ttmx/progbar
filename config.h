@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 /* Default settings; can be overriden by command line. */
 
-static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
+static int topbar = 1;                      /* -b  option; if 0, progbar appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
 	"Ubuntu-mono:size=12:antialias=true:autohint=true",
@@ -30,9 +30,17 @@ static const unsigned int alphas[SchemeLast][2] = {
  */
 static const char worddelimiters[] = " ";
 
-// Block height
-static const int bh = 22;
-// Length of the bar in fraction of screen width
-static const float len = 0.4;
+// Bar height
+static int bh = 18;
+// Width of the bar in fraction of screen width
+static float bwf = 0.4;
+// Border thickness
+static int border = 2;
+// Background
+static int background = 1;
 // Seconds to wait before disappearing
-static const int sleeptime = 2;
+static float sleeptime = 2;
+// Position of the bar in the horizontal direction
+static int pos_x = 0;
+// Position of the bar in the vertical direction
+static int pos_y = 0;
