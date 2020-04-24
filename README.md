@@ -19,7 +19,7 @@ Arg             | Description
 `-be <color>`   | Bar empty color
 `-bf <color>`   | Bar fill color
 `-x <x>`        | Horizontal position
-`-y <y>`        | Vertical position <br> Will count from the bottom if used in conjunction with `-b`
+`-y <y>`        | Vertical position <br> Will start from the bottom if used in conjunction with `-b`
 `-h <height>`   | Height
 `-w <width>`    | Width in fraction of screen width
 `-bt <border>`  | Border thickness
