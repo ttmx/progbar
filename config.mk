@@ -1,4 +1,4 @@
-# dmenu version
+# progbar version
 VERSION = 4.9
 
 # paths
