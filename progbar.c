@@ -228,14 +228,12 @@ read_Xresources(void) {
 
 		if (XrmGetResource(xdb, "progbar.font", "*", &type, &xval) == True) /* font or font set */
 			fonts[0] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "progbar.color0", "*", &type, &xval) == True)  /* normal background color */
+		if (XrmGetResource(xdb, "progbar.color0", "*", &type, &xval) == True)  /* background color */
+			colors[SchemeNorm][ColBg] = strdup(xval.addr);
+		if (XrmGetResource(xdb, "progbar.color6", "*", &type, &xval) == True)  /* bar empty color */
 			colors[SchemeSel][ColBg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "progbar.color7", "*", &type, &xval) == True)  /* normal foreground color */
-			colors[SchemeNorm][ColFg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "progbar.color6", "*", &type, &xval) == True)  /* selected background color */
-			colors[SchemeSel][ColBg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "progbar.color0", "*", &type, &xval) == True)  /* selected foreground color */
-			colors[SchemeSel][ColFg] = strdup(xval.addr);
+		if (XrmGetResource(xdb, "progbar.color7", "*", &type, &xval) == True)  /* bar fill color */
+			colors[SchemeOut][ColBg] = strdup(xval.addr);
 
 		XrmDestroyDatabase(xdb);
 	}
