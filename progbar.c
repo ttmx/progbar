@@ -270,11 +270,6 @@ main(int argc, char *argv[])
 			exit(0);
 		} else if (!strcmp(argv[i], "-b")) /* appears at the bottom of the screen */
 			topbar = 0;
-		else if (i + 1 == argc) {
-			percent = strtol(argv[i], &end, 10);
-			if(*end || percent>100 || percent<0)
-				usage();
-		}
 		else if (!strcmp(argv[i], "-nb"))  /* no background */
 			background = 0;
 		/* these options take one argument */
@@ -300,6 +295,11 @@ main(int argc, char *argv[])
 			border = atoi(argv[++i]);
 		else if (!strcmp(argv[i], "-t"))   /* bar display duration */
 			sleeptime = atof(argv[++i]);
+		else if (i + 1 == argc) {
+			percent = strtol(argv[i], &end, 10);
+			percent = percent < 0 ? 0 : percent;
+			percent = percent > 100 ? 100 : percent;
+		}
 	    else
 			usage();
 
