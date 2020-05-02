@@ -1,5 +1,5 @@
 # progbar version
-VERSION = 4.9
+VERSION = 1.2
 
 # paths
 PREFIX = /usr/local

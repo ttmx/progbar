@@ -211,7 +211,7 @@ usage(void)
 {
 	fputs("usage: progbar [-v] [-b] [-nb] [-m monitor] [-w windowid]\n"
 	      "               [-bg color] [-be color] [-bf color]\n"
-		  "               [-x x] [-y y] [-h height] [-w width]\n"
+		  "               [-x x] [-y y] [-h height] [-wf width]\n"
 		  "               [-bt border] [-t duration] percentage\n", stderr);
 	exit(1);
 }
@@ -228,14 +228,12 @@ read_Xresources(void) {
 
 		if (XrmGetResource(xdb, "progbar.font", "*", &type, &xval) == True) /* font or font set */
 			fonts[0] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "progbar.color0", "*", &type, &xval) == True)  /* normal background color */
+		if (XrmGetResource(xdb, "progbar.color0", "*", &type, &xval) == True)  /* background color */
+			colors[SchemeNorm][ColBg] = strdup(xval.addr);
+		if (XrmGetResource(xdb, "progbar.color6", "*", &type, &xval) == True)  /* bar empty color */
 			colors[SchemeSel][ColBg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "progbar.color7", "*", &type, &xval) == True)  /* normal foreground color */
-			colors[SchemeNorm][ColFg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "progbar.color6", "*", &type, &xval) == True)  /* selected background color */
-			colors[SchemeSel][ColBg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "progbar.color0", "*", &type, &xval) == True)  /* selected foreground color */
-			colors[SchemeSel][ColFg] = strdup(xval.addr);
+		if (XrmGetResource(xdb, "progbar.color7", "*", &type, &xval) == True)  /* bar fill color */
+			colors[SchemeOut][ColBg] = strdup(xval.addr);
 
 		XrmDestroyDatabase(xdb);
 	}
@@ -272,11 +270,6 @@ main(int argc, char *argv[])
 			exit(0);
 		} else if (!strcmp(argv[i], "-b")) /* appears at the bottom of the screen */
 			topbar = 0;
-		else if (i + 1 == argc) {
-			percent = strtol(argv[i], &end, 10);
-			if(*end || percent>100 || percent<0)
-				usage();
-		}
 		else if (!strcmp(argv[i], "-nb"))  /* no background */
 			background = 0;
 		/* these options take one argument */
@@ -296,12 +289,17 @@ main(int argc, char *argv[])
 			pos_y = atoi(argv[++i]);
 		else if (!strcmp(argv[i], "-h"))   /* bar height */
 			bh = atoi(argv[++i]);
-		else if (!strcmp(argv[i], "-w"))   /* bar width fraction */
+		else if (!strcmp(argv[i], "-wf"))   /* bar width fraction */
 			bwf = atof(argv[++i]);
 		else if (!strcmp(argv[i], "-bt"))  /* bar border thickness */
 			border = atoi(argv[++i]);
 		else if (!strcmp(argv[i], "-t"))   /* bar display duration */
 			sleeptime = atof(argv[++i]);
+		else if (i + 1 == argc) {
+			percent = strtol(argv[i], &end, 10);
+			percent = percent < 0 ? 0 : percent;
+			percent = percent > 100 ? 100 : percent;
+		}
 	    else
 			usage();
 

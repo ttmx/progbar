@@ -3,7 +3,7 @@ Simple X11 progress bar frankensteined from dmenu.
 
 ## Usage
 ```
-progbar [-v] [-b] [-nb] [-m monitor] [-w windowid] [-bg color] [-be color] [-bf color] [-x x] [-y y] [-h height] [-w width] [-bt border] [-t duration] percentage
+progbar [-v] [-b] [-nb] [-m monitor] [-w windowid] [-bg color] [-be color] [-bf color] [-x x] [-y y] [-h height] [-wf width] [-bt border] [-t duration] percentage
 ```
 
 ## Customization
@@ -21,6 +21,6 @@ Arg             | Description
 `-x <x>`        | Horizontal position
 `-y <y>`        | Vertical position <br> Will start from the bottom if used in conjunction with `-b`
 `-h <height>`   | Height
-`-w <width>`    | Width in fraction of screen width
+`-wf <width>`   | Width in fraction of screen width
 `-bt <border>`  | Border thickness
 `-t <duration>` | Display duration in seconds with decimal places
