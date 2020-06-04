@@ -3,12 +3,6 @@
 
 static int topbar = 1;                      /* -b  option; if 0, progbar appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
-static const char *fonts[] = {
-	"Ubuntu-mono:size=12:antialias=true:autohint=true",
-	"Ubuntu-mono:size=12",
-	"FontAwesome5Free:pixelsize=12:antialias=true:autohint=true",
-	"JoyPixels:pixelsize=15:antialias=true:autohint=true"
-};
 static const unsigned int bgalpha = 0xff;
 static const unsigned int fgalpha = OPAQUE;
 static const char *colors[SchemeLast][2] = {
@@ -31,7 +25,7 @@ static const unsigned int alphas[SchemeLast][2] = {
 static const char worddelimiters[] = " ";
 
 // Bar height
-static int bh = 18;
+static int bh = 25;
 // Width of the bar in fraction of screen width
 static float bwf = 0.4;
 // Border thickness

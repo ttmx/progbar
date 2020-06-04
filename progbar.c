@@ -226,8 +226,6 @@ read_Xresources(void) {
 		XrmDatabase xdb = XrmGetStringDatabase(xrm);
 		XrmValue xval;
 
-		if (XrmGetResource(xdb, "progbar.font", "*", &type, &xval) == True) /* font or font set */
-			fonts[0] = strdup(xval.addr);
 		if (XrmGetResource(xdb, "progbar.color0", "*", &type, &xval) == True)  /* background color */
 			colors[SchemeNorm][ColBg] = strdup(xval.addr);
 		if (XrmGetResource(xdb, "progbar.color6", "*", &type, &xval) == True)  /* bar empty color */
